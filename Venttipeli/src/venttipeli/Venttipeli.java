@@ -13,6 +13,8 @@ public class Venttipeli {
 
     public static void main(String[] args) {
         System.out.println("moi");
+        System.out.println("mita kuuluu onks niin ihquu mita sulle kuuluu"
+                + "joutsii jou");
     }
     
 }
