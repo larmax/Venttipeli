@@ -61,92 +61,86 @@ public class Venttipeli {
         }
         System.out.println("Korttisi" + Pelaajankäsi);
 
-   
-while(true){
-     System.out.println("haluatko lisätä tai jäädä");
-        int lisaajaa = lukijantti.nextInt();
-        if (lisaajaa == 1) {
+        while (true) {
+            System.out.println("haluatko lisätä tai jäädä");
+            int lisaajaa = lukijantti.nextInt();
+            if (lisaajaa == 1) {
 //lisaaTaiJää(Korttienarvo,Korttienmaa,Pelaajankäsi);
- int arvoo = Korttienarvo.get(rand.nextInt(Korttienarvo.size()));
-    
-        String maaa = Korttienmaa.get(rand.nextInt(Korttienmaa.size()));
-       
-        
-        if (Pelaajankäsi.containsKey(maaa) && Pelaajankäsi.containsValue(arvoo)) {
+                int arvoo = Korttienarvo.get(rand.nextInt(Korttienarvo.size()));
 
-            System.out.println("hää");
-        } else {
-            Pelaajankäsi.put(arvoo, maaa);
-            System.out.println("Korttisi" + Pelaajankäsi);
+                String maaa = Korttienmaa.get(rand.nextInt(Korttienmaa.size()));
+
+                if (Pelaajankäsi.containsKey(maaa) && Pelaajankäsi.containsValue(arvoo)) {
+
+                    System.out.println("hää");
+                } else {
+                    Pelaajankäsi.put(arvoo, maaa);
+                    System.out.println("Korttisi" + Pelaajankäsi);
+
+                }
+            } else if (lisaajaa == 2) {
+
+                int sum = 0;
+                for (int f : Pelaajankäsi.keySet()) {
+                    sum += f;
+
+                }
+                emanta(Korttienarvo, Korttienmaa, sum);
+                break;
+            }
 
         }
-        }else if (lisaajaa == 2) {
-          
-                  int sum = 0;
-for (int f : Pelaajankäsi.keySet()) {
-    sum += f;
-   
-}
-  emanta(Korttienarvo, Korttienmaa,sum);
-  break;
-        }
- 
-   }
     }
-   // public static void lisaaTaiJää(ArrayList<Integer> Korttienarvo, ArrayList<String> Korttienmaa, HashMap< Integer, String> Pelaajankäsi) {
-     //    Scanner lukijantti = new Scanner(System.in);
-       // Random rand = new Random();
-       
-    //}
-    
+    // public static void lisaaTaiJää(ArrayList<Integer> Korttienarvo, ArrayList<String> Korttienmaa, HashMap< Integer, String> Pelaajankäsi) {
+    //    Scanner lukijantti = new Scanner(System.in);
+    // Random rand = new Random();
 
+    //}
     public static void emanta(ArrayList<Integer> Korttienarvo, ArrayList<String> Korttienmaa, int pelaajanpisteet) {
-        
+
         Random rand = new Random();
         HashMap< Integer, String> Emännänkäsi = new HashMap<>();
-        int korttienmaara = rand.nextInt(5) + 3;
+        int korttienmaara = rand.nextInt(4) + 3;
         for (int i = 2; i < korttienmaara; i++) {
             int arvoo = Korttienarvo.get(rand.nextInt(Korttienarvo.size()));
 
             String maaa = Korttienmaa.get(rand.nextInt(Korttienmaa.size()));
-
+             int emännänpisteet = 0;
+        for (int f : Emännänkäsi.keySet()) {
+            emännänpisteet += f;
+        }
+if(emännänpisteet >= 21){
+                break;
+            }
+        
             Emännänkäsi.put(arvoo, maaa);
             System.out.println(Emännänkäsi);
-             
-        }
-        int emännänpisteet = 0;
-for (int f :Emännänkäsi.keySet()) {
-    emännänpisteet += f;
-    System.out.println("");
-}
-
-
+        }     
+        int emännänpisteet2 = 0;
+        for (int f : Emännänkäsi.keySet()) {
+            emännänpisteet2 += f;
             System.out.println("");
-    if(emännänpisteet >= pelaajanpisteet && emännänpisteet <= 21){
-        System.out.println("Emäntä voitti!");
-        
-    }else if (pelaajanpisteet > emännänpisteet && pelaajanpisteet <= 21){
-        System.out.println("Voitit!");
-    }else if(pelaajanpisteet >= 21 && emännänpisteet >= 21){
-        System.out.println("Molemmat hävisivät");
-    }else if(pelaajanpisteet <=21 && emännänpisteet >21){
-        System.out.println("Voitit!");
-    
-    }else if(pelaajanpisteet >21 && emännänpisteet <=21){
-        System.out.println("Emäntä voitti!");
-          
-    }else if(pelaajanpisteet == emännänpisteet && emännänpisteet <=21){
-        System.out.println("Emäntä voitti!");
-    }else{
-        System.out.println("error");
-    }
-    
-}   
-    }
-            
-            
-            
-        
-    
+        }
 
+        System.out.println("");
+        if (emännänpisteet2 >= pelaajanpisteet && emännänpisteet2 <= 21) {
+            System.out.println("Emäntä voitti!");
+
+        } else if (pelaajanpisteet > emännänpisteet2 && pelaajanpisteet <= 21) {
+            System.out.println("Voitit!");
+        } else if (pelaajanpisteet >= 21 && emännänpisteet2 >= 21) {
+            System.out.println("Molemmat hävisivät");
+        } else if (pelaajanpisteet <= 21 && emännänpisteet2 > 21) {
+            System.out.println("Voitit!");
+
+        } else if (pelaajanpisteet > 21 && emännänpisteet2 <= 21) {
+            System.out.println("Emäntä voitti!");
+
+        } else if (pelaajanpisteet == emännänpisteet2 && emännänpisteet2 <= 21) {
+            System.out.println("Emäntä voitti!");
+        } else {
+            System.out.println("error");
+        }
+
+    }
 
