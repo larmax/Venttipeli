@@ -81,9 +81,16 @@ while(true){
 
         }
         }else if (lisaajaa == 2) {
-            emanta(Korttienarvo, Korttienmaa);
-            
+          
+                  int sum = 0;
+for (int f : Pelaajankäsi.keySet()) {
+    sum += f;
+   
+}
+  emanta(Korttienarvo, Korttienmaa,sum);
+  break;
         }
+ 
    }
     }
    // public static void lisaaTaiJää(ArrayList<Integer> Korttienarvo, ArrayList<String> Korttienmaa, HashMap< Integer, String> Pelaajankäsi) {
@@ -93,21 +100,53 @@ while(true){
     //}
     
 
-    public static void emanta(ArrayList<Integer> Korttienarvo, ArrayList<String> Korttienmaa) {
-
+    public static void emanta(ArrayList<Integer> Korttienarvo, ArrayList<String> Korttienmaa, int pelaajanpisteet) {
+        
         Random rand = new Random();
         HashMap< Integer, String> Emännänkäsi = new HashMap<>();
-        int korttienmaara = rand.nextInt((4 - 1));
-        for (int i = 0; i < korttienmaara; i++) {
+        int korttienmaara = rand.nextInt(5) + 3;
+        for (int i = 2; i < korttienmaara; i++) {
             int arvoo = Korttienarvo.get(rand.nextInt(Korttienarvo.size()));
 
             String maaa = Korttienmaa.get(rand.nextInt(Korttienmaa.size()));
 
             Emännänkäsi.put(arvoo, maaa);
             System.out.println(Emännänkäsi);
-            
+             
         }
-
-    }
-
+        int emännänpisteet = 0;
+for (int f :Emännänkäsi.keySet()) {
+    emännänpisteet += f;
+    System.out.println("");
 }
+
+
+            System.out.println("");
+    if(emännänpisteet >= pelaajanpisteet && emännänpisteet <= 21){
+        System.out.println("Emäntä voitti!");
+        
+    }else if (pelaajanpisteet > emännänpisteet && pelaajanpisteet <= 21){
+        System.out.println("Voitit!");
+    }else if(pelaajanpisteet >= 21 && emännänpisteet >= 21){
+        System.out.println("Molemmat hävisivät");
+    }else if(pelaajanpisteet <=21 && emännänpisteet >21){
+        System.out.println("Voitit!");
+    
+    }else if(pelaajanpisteet >21 && emännänpisteet <=21){
+        System.out.println("Emäntä voitti!");
+          
+    }else if(pelaajanpisteet == emännänpisteet && emännänpisteet <=21){
+        System.out.println("Emäntä voitti!");
+    }else{
+        System.out.println("error");
+    }
+    
+}   
+    }
+            
+            
+            
+        
+    
+
+
