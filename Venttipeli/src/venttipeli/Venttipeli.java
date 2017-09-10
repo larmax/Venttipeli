@@ -100,8 +100,8 @@ public class Venttipeli {
 
         Random rand = new Random();
         HashMap< Integer, String> Emännänkäsi = new HashMap<>();
-        int korttienmaara = rand.nextInt(4) + 3;
-        for (int i = 2; i < korttienmaara; i++) {
+        int korttienmaara = rand.nextInt(5) + 2;
+        for (int i = 2; i < 5; i++) {
             int arvoo = Korttienarvo.get(rand.nextInt(Korttienarvo.size()));
 
             String maaa = Korttienmaa.get(rand.nextInt(Korttienmaa.size()));
@@ -109,10 +109,12 @@ public class Venttipeli {
         for (int f : Emännänkäsi.keySet()) {
             emännänpisteet += f;
         }
-if(emännänpisteet >= 21){
+if(emännänpisteet > 21){
                 break;
             }
-        
+else if (emännänpisteet > pelaajanpisteet){
+    break;
+}
             Emännänkäsi.put(arvoo, maaa);
             System.out.println(Emännänkäsi);
         }     
@@ -144,3 +146,4 @@ if(emännänpisteet >= 21){
 
     }
 
+}
