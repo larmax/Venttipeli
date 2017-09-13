@@ -1,7 +1,9 @@
 package venttipeli;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
@@ -44,15 +46,19 @@ public class Venttipeli {
     public static void Jakaminen(ArrayList<Integer> Korttienarvo, ArrayList<String> Korttienmaa) {
         Scanner lukijantti = new Scanner(System.in);
         Random rand = new Random();
-
-        HashMap< Integer, String> Pelaajankäsi = new HashMap<>();
+  Multimap<Integer, String> Pelaajankäsi = ArrayListMultimap.create();
+     
         for (int i = 0; i < 2; i++) {
             int arvoo = Korttienarvo.get(rand.nextInt(Korttienarvo.size()));
 
             String maaa = Korttienmaa.get(rand.nextInt(Korttienmaa.size()));
-            if (Pelaajankäsi.containsKey(maaa) && Pelaajankäsi.containsValue(arvoo)) {
+            if (Pelaajankäsi.containsEntry(arvoo,maaa)) {
                 arvoo = Korttienarvo.get(rand.nextInt(Korttienarvo.size()));
+               
                 maaa = Korttienmaa.get(rand.nextInt(Korttienmaa.size()));
+                
+                    
+               
             } else {
                 Pelaajankäsi.put(arvoo, maaa);
 
@@ -78,6 +84,8 @@ public class Venttipeli {
                     System.out.println("Korttisi" + Pelaajankäsi);
 
                 }
+                
+               
             } else if (lisaajaa == 2) {
 
                 int sum = 0;
@@ -99,7 +107,7 @@ public class Venttipeli {
     public static void emanta(ArrayList<Integer> Korttienarvo, ArrayList<String> Korttienmaa, int pelaajanpisteet) {
 
         Random rand = new Random();
-        HashMap< Integer, String> Emännänkäsi = new HashMap<>();
+        Multimap<Integer, String> Emännänkäsi = ArrayListMultimap.create();
         int korttienmaara = rand.nextInt(5) + 2;
         for (int i = 2; i < 5; i++) {
             int arvoo = Korttienarvo.get(rand.nextInt(Korttienarvo.size()));
@@ -115,9 +123,13 @@ if(emännänpisteet > 21){
 else if (emännänpisteet > pelaajanpisteet){
     break;
 }
+if (Emännänkäsi.containsEntry(arvoo,maaa)) {
+    System.out.println("hää");
+}else{
             Emännänkäsi.put(arvoo, maaa);
             System.out.println(Emännänkäsi);
-        }     
+}      
+}     
         int emännänpisteet2 = 0;
         for (int f : Emännänkäsi.keySet()) {
             emännänpisteet2 += f;
