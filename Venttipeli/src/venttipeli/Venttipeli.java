@@ -48,7 +48,7 @@ public class Venttipeli {
         Random rand = new Random();
   Multimap<Integer, String> Pelaajankäsi = ArrayListMultimap.create();
      
-        for (int i = 0; i < 2; i++) {
+       
             int arvoo = Korttienarvo.get(rand.nextInt(Korttienarvo.size()));
 
             String maaa = Korttienmaa.get(rand.nextInt(Korttienmaa.size()));
@@ -64,7 +64,7 @@ public class Venttipeli {
 
             }
 
-        }
+        
         System.out.println("Korttisi" + Pelaajankäsi);
 
         while (true) {
@@ -72,9 +72,9 @@ public class Venttipeli {
             int lisaajaa = lukijantti.nextInt();
             if (lisaajaa == 1) {
 //lisaaTaiJää(Korttienarvo,Korttienmaa,Pelaajankäsi);
-                int arvoo = Korttienarvo.get(rand.nextInt(Korttienarvo.size()));
+                arvoo = Korttienarvo.get(rand.nextInt(Korttienarvo.size()));
 
-                String maaa = Korttienmaa.get(rand.nextInt(Korttienmaa.size()));
+               maaa = Korttienmaa.get(rand.nextInt(Korttienmaa.size()));
 
                 if (Pelaajankäsi.containsKey(maaa) && Pelaajankäsi.containsValue(arvoo)) {
 
